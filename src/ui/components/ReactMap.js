@@ -10,7 +10,7 @@ var ReactFrag = require('./ReactFrag');
 
 var GoogleMapsMap = ReactMapComponents.Map;
 
-// TODO: Remove the need for this, we shouldn't need to render 3 times to initialise
+// TODO: Remove the need for this, we shouldn't need to render 3 times to initialiseco
 var MapLifeCycle = keyMirror({
   CREATING_HOLDER: null,
   CREATING_MAP: null
@@ -51,8 +51,6 @@ var ReactMap = React.createClass({
       width: this.props.width,
       height: this.props.height
     };
-
-    console.log(this.state);
 
     var map;
     if (this.state.mapLifeCycleState !== MapLifeCycle.CREATING_HOLDER) {
