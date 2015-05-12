@@ -34,7 +34,10 @@ var ReactMap = React.createClass({
     // Now we have the map created, we need to run the render
     // cycle again to pass down the `map` holder for the
     // components to render into.
-    this.setState({mapLifeCycleState: MapLifeCycle.CREATING_MAP});
+    this.setState({
+      mapLifeCycleState: MapLifeCycle.CREATING_MAP,
+      mapDiv: this.refs.mapHolder.getDOMNode()
+    });
   },
 
   componentDidUpdate: function() {
@@ -49,13 +52,15 @@ var ReactMap = React.createClass({
       height: this.props.height
     };
 
+    console.log(this.state);
+
     var map;
     if (this.state.mapLifeCycleState !== MapLifeCycle.CREATING_HOLDER) {
       map = (
         <GoogleMapsMap
           {...this.props}
           ref="map"
-          mapDiv={this.refs.mapHolder.getDOMNode()}
+          mapDiv={this.state.mapDiv}
           width={null}
           height={null} />
       );
